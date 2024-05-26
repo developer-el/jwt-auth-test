@@ -17,7 +17,7 @@ public class ResourceServerClient {
         .baseUrl("http://localhost:8080")
         .build();
     final ResponseEntity<Void> response = restClient.post()
-        .uri("/jwt/secret")
+        .uri("/kidi/info-update")
         .contentType(MediaType.APPLICATION_JSON)
         .body(new KidiSecretKey(secretKey))
         .retrieve()
