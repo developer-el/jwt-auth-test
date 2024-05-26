@@ -16,7 +16,7 @@ public class JwtKeyController {
 
   private final JwtService jwtService;
 
-  @PostMapping("/kidi/info-update")
+  @PostMapping("/v1/security/update")
   public ResponseEntity<Void> updateSecretKey(@RequestBody KidiSecretKey secretKey) {
     log.info("secretKey: {}", secretKey);
     jwtService.updateSecretKey(secretKey.getSecretKey());
