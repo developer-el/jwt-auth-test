@@ -13,12 +13,12 @@ public class MemoryJwtService implements JwtService {
   private static String secretKey = null;
 
   @Override
-  public String getSecretKey() {
+  public String getSecretKey(String serviceId) {
     return secretKey;
   }
 
   @Override
-  public void updateSecretKey(String newSecretKey) {
+  public void updateSecretKey(String serviceId, String newSecretKey) {
     if (newSecretKey == null) {
       throw new IllegalArgumentException("newSecretKey cannot be null");
     }
@@ -26,7 +26,7 @@ public class MemoryJwtService implements JwtService {
   }
 
   @Override
-  public Boolean validate(String token) {
+  public Boolean validate(String serviceId, String token) {
     if (secretKey == null) {
       throw new IllegalArgumentException("secretKey cannot be null");
     }

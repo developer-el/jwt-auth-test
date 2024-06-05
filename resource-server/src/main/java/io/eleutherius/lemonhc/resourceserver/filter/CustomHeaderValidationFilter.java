@@ -22,12 +22,16 @@ public class CustomHeaderValidationFilter implements Filter {
       FilterChain filterChain) throws IOException, ServletException {
     HttpServletRequest request = (HttpServletRequest) servletRequest;
 
-    final String kidiToken = request.getHeader("x-kidi-auth");
+    final String kidiToken = request.getHeader("x-service-auth");
+    final String serviceId = request.getHeader("x-service-id");
     if (kidiToken == null || kidiToken.trim().isEmpty()) {
       throw new RuntimeException("401"); // 401
     }
+    if (serviceId == null || serviceId.trim().isEmpty()) {
+      throw new RuntimeException("401"); // 401
+    }
 
-    Boolean valid = jwtService.validate(kidiToken);
+    Boolean valid = jwtService.validate(serviceId, kidiToken);
     if (!valid) {
       throw new RuntimeException("403"); // 403
     }

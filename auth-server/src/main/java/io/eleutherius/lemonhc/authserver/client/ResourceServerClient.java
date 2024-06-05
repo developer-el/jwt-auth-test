@@ -19,7 +19,7 @@ public class ResourceServerClient {
     final ResponseEntity<Void> response = restClient.post()
         .uri("/v1/security/update")
         .contentType(MediaType.APPLICATION_JSON)
-        .body(new KidiSecretKey(secretKey))
+        .body(new KidiSecretKey("kidi", secretKey))
         .retrieve()
         .toBodilessEntity();
 
@@ -38,7 +38,8 @@ public class ResourceServerClient {
 
     final String response = restClient.get()
         .uri("/messages")
-        .header("x-kidi-auth", token)
+        .header("x-service-auth", token)
+        .header("x-service-id", "kidi")
         .retrieve()
         .body(String.class);
     return response;

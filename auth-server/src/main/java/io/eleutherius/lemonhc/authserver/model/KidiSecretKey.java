@@ -8,7 +8,7 @@ import lombok.Setter;
 @Setter
 @AllArgsConstructor
 public class KidiSecretKey {
-
+  private String serviceId;
   private String secretKey;
 
   @Override

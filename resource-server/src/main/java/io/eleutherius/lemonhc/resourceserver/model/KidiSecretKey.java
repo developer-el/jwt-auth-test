@@ -7,6 +7,7 @@ import lombok.Setter;
 @Setter
 public class KidiSecretKey {
 
+  private String serviceId;
   private String secretKey;
 
   @Override
